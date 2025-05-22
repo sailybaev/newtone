@@ -138,8 +138,8 @@ export function ServiceCardsGrid() {
   return (
     <section id="services" className="py-16 md:py-24 bg-black">
       <div className="container">
-        <h2 className="text-3xl font-bold tracking-tight mb-16 text-center uppercase">Наши Услуги</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+        <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-16 text-center uppercase">Наши Услуги</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {services.map((service) => (
             <motion.div
               key={service.id}
@@ -160,10 +160,10 @@ export function ServiceCardsGrid() {
                     />
                   </div>
                 </div>
-                <div className="p-6 flex justify-between items-center">
-                  <h3 className="text-xl font-bold">{service.title}</h3>
+                <div className="p-4 md:p-6 flex justify-between items-center">
+                  <h3 className="text-lg md:text-xl font-bold">{service.title}</h3>
                   <div className="flex items-center gap-2">
-                    <span className="text-xl font-medium whitespace-nowrap">{service.price}</span>
+                    <span className="text-base md:text-xl font-medium whitespace-nowrap">{service.price}</span>
                   </div>
                 </div>
               </Link>

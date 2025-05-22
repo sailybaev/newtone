@@ -14,18 +14,28 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const services = [
-  { id: "exterior", label: "Комплексный детейлинг" },
-  { id: "interior", label: "Химчистка салона" },
-  { id: "paint", label: "Полировка кузова" },
-  { id: "ceramic", label: "Керамическое покрытие" },
+  { id: "cleaning", label: "Химчистка" },
   { id: "polish", label: "Полировка" },
-  { id: "protection", label: "Антигравийная пленка" },
+  { id: "leather", label: "Рестоварция кожи" },
+  { id: "interior", label: "Перетяжка интерьера авто или перетяжка потолка и перетяжка ковралана" },
+  { id: "steering", label: "Перетяжка руля" },
+  { id: "wrapping", label: "Оклейка пленкой" },
+  { id: "windshield", label: "Зашита лобового" },
+  { id: "tinting", label: "Тонировка" },
+  { id: "soundproofing", label: "Шумойзоляция" },
+  { id: "plastic", label: "Зашита пластика салона" },
+  { id: "aquaprint", label: "Аквапринт" },
+  { id: "pdr", label: "Выпремление вмятин (PDR)" },
+  { id: "bodywork", label: "Кузовной ремонт" },
+  { id: "painting", label: "Малярка" },
+  { id: "car_painting", label: "Покраска авто" },
+  { id: "alarm", label: "Установка сигнализации (StarLine, Pandora)" },
+  { id: "lighting", label: "Установка линз, автосвет, доп освещение" },
 ]
 
 const branches = [
-  { id: "central", label: "Центральный филиал", address: "ул. Автомобильная, 1" },
-  { id: "north", label: "Северный филиал", address: "пр. Детейлинга, 42" },
-  { id: "west", label: "Западный филиал", address: "ул. Полировочная, 15" },
+  { id: "central", label: "Первый филиал", address: "Улица Алихан Бокейхан, 18/1а", whatsapp: "+77785886779" },
+  { id: "north", label: "Второй филиал", address: "Улица Каныш Сатпаев, 16/3", whatsapp: "+77712222267" },
 ]
 
 export function CalculateForm() {
@@ -94,7 +104,8 @@ export function CalculateForm() {
     `.trim()
 
     const encodedMessage = encodeURIComponent(message)
-    window.open(`https://wa.me/?text=${encodedMessage}`, "_blank")
+    const whatsappNumber = selectedBranch?.whatsapp || "+77785886779" // Default number if no branch selected
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, "_blank")
   }
 
   return (
@@ -156,7 +167,7 @@ export function CalculateForm() {
                       <Input
                         id="phone"
                         name="phone"
-                        placeholder="+7 (999) 123-45-67"
+                        placeholder="+7 777 777 77 77"
                         value={formData.phone}
                         onChange={handleChange}
                         className="bg-zinc-800 border-gray-700 rounded-none"
@@ -166,12 +177,12 @@ export function CalculateForm() {
                     <div className="space-y-2">
                       <Label htmlFor="branch">Выберите Филиал</Label>
                       <Select onValueChange={(value) => handleSelectChange("branch", value)} value={formData.branch}>
-                        <SelectTrigger className="bg-zinc-800 border-gray-700 rounded-none">
+                        <SelectTrigger className="bg-zinc-800 border-gray-700 rounded-none text-white w-full text-sm">
                           <SelectValue placeholder="Выберите филиал" />
                         </SelectTrigger>
-                        <SelectContent className="bg-zinc-800 border-gray-700">
+                        <SelectContent className="bg-zinc-800 border-gray-700 w-full">
                           {branches.map((branch) => (
-                            <SelectItem key={branch.id} value={branch.id}>
+                            <SelectItem key={branch.id} value={branch.id} className="text-white text-sm">
                               {branch.label} - {branch.address}
                             </SelectItem>
                           ))}
@@ -185,17 +196,17 @@ export function CalculateForm() {
                         onValueChange={(value) => handleSelectChange("carBrand", value)}
                         value={formData.carBrand}
                       >
-                        <SelectTrigger className="bg-zinc-800 border-gray-700 rounded-none">
+                        <SelectTrigger className="bg-zinc-800 border-gray-700 rounded-none text-white w-full text-sm">
                           <SelectValue placeholder="Выберите марку" />
                         </SelectTrigger>
-                        <SelectContent className="bg-zinc-800 border-gray-700">
-                          <SelectItem value="bmw">BMW</SelectItem>
-                          <SelectItem value="mercedes">Mercedes-Benz</SelectItem>
-                          <SelectItem value="audi">Audi</SelectItem>
-                          <SelectItem value="toyota">Toyota</SelectItem>
-                          <SelectItem value="honda">Honda</SelectItem>
-                          <SelectItem value="ford">Ford</SelectItem>
-                          <SelectItem value="other">Другое</SelectItem>
+                        <SelectContent className="bg-zinc-800 border-gray-700 w-full">
+                          <SelectItem value="bmw" className="text-white text-sm">BMW</SelectItem>
+                          <SelectItem value="mercedes" className="text-white text-sm">Mercedes-Benz</SelectItem>
+                          <SelectItem value="audi" className="text-white text-sm">Audi</SelectItem>
+                          <SelectItem value="toyota" className="text-white text-sm">Toyota</SelectItem>
+                          <SelectItem value="honda" className="text-white text-sm">Honda</SelectItem>
+                          <SelectItem value="ford" className="text-white text-sm">Ford</SelectItem>
+                          <SelectItem value="other" className="text-white text-sm">Другое</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -215,14 +226,14 @@ export function CalculateForm() {
                     <div className="space-y-2">
                       <Label htmlFor="carYear">Год Выпуска</Label>
                       <Select onValueChange={(value) => handleSelectChange("carYear", value)} value={formData.carYear}>
-                        <SelectTrigger className="bg-zinc-800 border-gray-700 rounded-none">
+                        <SelectTrigger className="bg-zinc-800 border-gray-700 rounded-none text-white w-full text-sm">
                           <SelectValue placeholder="Выберите год" />
                         </SelectTrigger>
-                        <SelectContent className="bg-zinc-800 border-gray-700">
+                        <SelectContent className="bg-zinc-800 border-gray-700 w-full">
                           {Array.from({ length: 25 }, (_, i) => {
                             const year = new Date().getFullYear() - i
                             return (
-                              <SelectItem key={year} value={year.toString()}>
+                              <SelectItem key={year} value={year.toString()} className="text-white text-sm">
                                 {year}
                               </SelectItem>
                             )
@@ -232,17 +243,20 @@ export function CalculateForm() {
                     </div>
 
                     <div className="space-y-3">
-                      <Label>Услуги</Label>
-                      <div className="grid grid-cols-2 gap-3">
+                      <Label className="text-base font-medium">Услуги</Label>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-zinc-800/50 rounded-none border border-gray-700">
                         {services.map((service) => (
-                          <div key={service.id} className="flex items-center space-x-2">
+                          <div key={service.id} className="flex items-start space-x-3 p-2 hover:bg-zinc-700/50 transition-colors rounded-none">
                             <Checkbox
                               id={service.id}
                               checked={formData.services.includes(service.id)}
                               onCheckedChange={(checked) => handleServiceChange(service.id, checked as boolean)}
-                              className="border-gray-600 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600"
+                              className="mt-1 border-gray-600 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600"
                             />
-                            <Label htmlFor={service.id} className="text-sm font-normal">
+                            <Label 
+                              htmlFor={service.id} 
+                              className="text-sm font-normal leading-tight cursor-pointer hover:text-green-400 transition-colors"
+                            >
                               {service.label}
                             </Label>
                           </div>

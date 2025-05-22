@@ -80,7 +80,7 @@ export function Gallery() {
   return (
     <section id="gallery" className="py-16 md:py-24 bg-black">
       <div className="container">
-        <h2 className="text-3xl font-bold tracking-tight mb-12 text-center uppercase">Our Work</h2>
+        <h2 className="text-3xl font-bold tracking-tight mb-12 text-center uppercase">Наши работы</h2>
 
         <div className="relative">
           <button

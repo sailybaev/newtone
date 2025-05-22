@@ -67,7 +67,7 @@ export function Reviews() {
   return (
     <section className="py-16 md:py-24 bg-black">
       <div className="container">
-        <h2 className="text-3xl font-bold tracking-tight mb-12 text-center uppercase">What Our Clients Say</h2>
+        <h2 className="text-3xl font-bold tracking-tight mb-12 text-center uppercase">Отзывы</h2>
 
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 z-10">

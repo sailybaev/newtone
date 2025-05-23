@@ -12,31 +12,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-
-const services = [
-  { id: "cleaning", label: "Химчистка" },
-  { id: "polish", label: "Полировка" },
-  { id: "leather", label: "Рестоварция кожи" },
-  { id: "interior", label: "Перетяжка интерьера авто или перетяжка потолка и перетяжка ковралана" },
-  { id: "steering", label: "Перетяжка руля" },
-  { id: "wrapping", label: "Оклейка пленкой" },
-  { id: "windshield", label: "Зашита лобового" },
-  { id: "tinting", label: "Тонировка" },
-  { id: "soundproofing", label: "Шумойзоляция" },
-  { id: "plastic", label: "Зашита пластика салона" },
-  { id: "aquaprint", label: "Аквапринт" },
-  { id: "pdr", label: "Выпремление вмятин (PDR)" },
-  { id: "bodywork", label: "Кузовной ремонт" },
-  { id: "painting", label: "Малярка" },
-  { id: "car_painting", label: "Покраска авто" },
-  { id: "alarm", label: "Установка сигнализации (StarLine, Pandora)" },
-  { id: "lighting", label: "Установка линз, автосвет, доп освещение" },
-]
-
-const branches = [
-  { id: "central", label: "Первый филиал", address: "Улица Алихан Бокейхан, 18/1а", whatsapp: "+77785886779" },
-  { id: "north", label: "Второй филиал", address: "Улица Каныш Сатпаев, 16/3", whatsapp: "+77712222267" },
-]
+import { services } from "@/config/services"
+import { branches } from "@/config/branches"
 
 export function CalculateForm() {
   const [isOpen, setIsOpen] = useState(false)
@@ -50,6 +27,29 @@ export function CalculateForm() {
     services: [] as string[],
     comment: "",
   })
+
+  const calculateTotal = () => {
+    let total = 0
+    let hasPriceInquiry = false
+
+    formData.services.forEach(serviceId => {
+      const service = services.find(s => s.id === serviceId)
+      if (service) {
+        if (service.price === "цена по запросу") {
+          hasPriceInquiry = true
+        } else {
+          // Extract numeric value from price string (e.g., "от 50 000 ₸" -> 50000)
+          const priceMatch = service.price.match(/от\s*(\d[\d\s]*)/)
+          if (priceMatch) {
+            const price = parseInt(priceMatch[1].replace(/\s/g, ''))
+            total += price
+          }
+        }
+      }
+    })
+
+    return { total, hasPriceInquiry }
+  }
 
   const handleServiceChange = (serviceId: string, checked: boolean) => {
     if (checked) {
@@ -82,7 +82,7 @@ export function CalculateForm() {
 
   const generateWhatsAppMessage = () => {
     const selectedServices = formData.services
-      .map((id) => services.find((service) => service.id === id)?.label)
+      .map((id) => services.find((service) => service.id === id)?.title)
       .filter(Boolean)
       .join(", ")
 
@@ -104,7 +104,7 @@ export function CalculateForm() {
     `.trim()
 
     const encodedMessage = encodeURIComponent(message)
-    const whatsappNumber = selectedBranch?.whatsapp || "+77785886779" // Default number if no branch selected
+    const whatsappNumber = selectedBranch?.whatsapp || "+77785886779"
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, "_blank")
   }
 
@@ -257,7 +257,7 @@ export function CalculateForm() {
                               htmlFor={service.id} 
                               className="text-sm font-normal leading-tight cursor-pointer hover:text-green-400 transition-colors"
                             >
-                              {service.label}
+                              {service.title}
                             </Label>
                           </div>
                         ))}
@@ -275,6 +275,30 @@ export function CalculateForm() {
                         className="bg-zinc-800 border-gray-700 rounded-none min-h-[100px]"
                       />
                     </div>
+
+                    {formData.services.length > 0 && (
+                      <div className="p-4 bg-zinc-800/50 rounded-none border border-gray-700 mb-4">
+                        <div className="text-center">
+                          {(() => {
+                            const { total, hasPriceInquiry } = calculateTotal()
+                            return (
+                              <>
+                                {total > 0 && (
+                                  <p className="text-lg font-semibold text-green-400">
+                                    Итого: от {total.toLocaleString()} ₸
+                                  </p>
+                                )}
+                                {hasPriceInquiry && (
+                                  <p className="text-sm text-gray-400 mt-1">
+                                    * Некоторые услуги требуют уточнения цены
+                                  </p>
+                                )}
+                              </>
+                            )
+                          })()}
+                        </div>
+                      </div>
+                    )}
 
                     <Button
                       type="button"

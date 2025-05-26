@@ -34,16 +34,16 @@ export default function Home() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  if (!isMobile) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-black text-white">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Только для мобильных устройств</h1>
-          <p className="text-gray-400">Этот сайт доступен только на мобильных устройствах.</p>
-        </div>
-      </div>
-    )
-  }
+  // if (!isMobile) {
+  //   return (
+  //     <div className="flex min-h-screen items-center justify-center bg-black text-white">
+  //       <div className="text-center">
+  //         <h1 className="text-2xl font-bold mb-4">Только для мобильных устройств</h1>
+  //         <p className="text-gray-400">Этот сайт доступен только на мобильных устройствах.</p>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
@@ -53,11 +53,29 @@ export default function Home() {
             {/* <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gray-700">
               <Image src="/logo.png" alt="NEWTONE" width={40} height={40} className="object-cover" />
             </div> */}
-            <span className="text-lg font-medium tracking-wider">NEWTONE</span>
+            <span className="text-lg font-medium tracking-wider">NEWTONE</span> 
           </Link>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="#services" className="text-gray-400 hover:text-white transition-colors">
+              Услуги
+            </Link>
+            <Link href="#about" className="text-gray-400 hover:text-white transition-colors">
+              О Нас
+            </Link>
+            <Link href="#gallery" className="text-gray-400 hover:text-white transition-colors">
+              Галерея
+            </Link>
+            <Link href="#contact" className="text-gray-400 hover:text-white transition-colors">
+              Контакты
+            </Link>
+          </nav>
+
+          {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="p-2 text-gray-400 hover:text-white transition-colors"
+            className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

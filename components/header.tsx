@@ -44,11 +44,11 @@ export function Header() {
       >
         <div
           className={`absolute inset-0 transition-opacity duration-300 ${
-            isScrolled ? "opacity-70" : "opacity-0"
+            isScrolled ? "opacity-20" : "opacity-0"
           }`}
           style={{
             backgroundImage: `url('/carbon.jpg')`,
-            backgroundSize: "200px",
+            backgroundSize: "60%",
             backgroundRepeat: "repeat",
             backgroundPosition: "center",
             zIndex: -1

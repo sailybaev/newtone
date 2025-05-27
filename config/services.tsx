@@ -10,55 +10,55 @@ export interface Service {
 }
 
 export const services: Service[] = [
-  {
+  { 
     id: "chemical-cleaning",
     title: "ХИМЧИСТКА САЛОНА",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/himsalon.jpeg",
     price: "от 50 000 ₸",
     link: "#",
     cols: 2,
     category: "detailing"
   },
-  {
+  { // done
     id: "polishing",
     title: "ПОЛИРОВКА КУЗОВА",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/polirovka.jpeg",
     price: "от 70 000 ₸",
     link: "#",
     cols: 1,
     category: "detailing"
   },
-  {
+  { // done
     id: "leather-restoration",
     title: "РЕСТАВРАЦИЯ КОЖИ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/leather.jpeg",
     price: "цена по запросу",
     link: "#",
     cols: 1,
     category: "detailing"
   },
-  {
+  { // done
     id: "interior-upholstery",
     title: "ПЕРЕТЯЖКА ИНТЕРЬЕРА",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/interior.jpeg",
     price: "цена по запросу",
     link: "#",
     cols: 1,
     category: "detailing"
   },
-  {
+  { // done
     id: "steering-wheel",
     title: "ПЕРЕТЯЖКА РУЛЯ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/rul.jpeg",
     price: "цена по запросу",
     link: "#",
     cols: 1,
     category: "detailing"
   },
-  {
+  { 
     id: "wrapping",
     title: "ОКЛЕЙКА ПЛЕНКОЙ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/plenka.jpeg",
     price: "от 250 000 ₸",
     link: "#",
     cols: 2,
@@ -82,19 +82,19 @@ export const services: Service[] = [
     cols: 1,
     category: "protection"
   },
-  {
+  { // done
     id: "sound-insulation",
     title: "ШУМОИЗОЛЯЦИЯ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/shum.jpeg",
     price: "от 350 000 ₸",
     link: "#",
     cols: 1,
     category: "installation"
   },
-  {
+  { 
     id: "interior-protection",
     title: "ЗАЩИТА ПЛАСТИКА САЛОНА",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/plastik.jpeg",
     price: "от 70 000 ₸",
     link: "#",
     cols: 1,
@@ -118,7 +118,7 @@ export const services: Service[] = [
     cols: 2,
     category: "repair"
   },
-  {
+  { 
     id: "body-repair",
     title: "КУЗОВНОЙ РЕМОНТ",
     image: "/placeholder.svg?height=400&width=600",
@@ -130,7 +130,7 @@ export const services: Service[] = [
   {
     id: "painting",
     title: "ПОКРАСКА АВТО",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/pokraska.jpeg",
     price: "цена по запросу",
     link: "#",
     cols: 1,
@@ -145,10 +145,10 @@ export const services: Service[] = [
     cols: 1,
     category: "installation"
   },
-  {
+  { // done
     id: "lighting",
     title: "УСТАНОВКА ЛИНЗ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/lens.jpeg",
     price: "цена по запросу",
     link: "#",
     cols: 1,

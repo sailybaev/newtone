@@ -34,14 +34,14 @@ export function Reviews() {
             >
               <div className="bg-zinc-900 p-8 rounded-none border border-gray-800">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="relative h-16 w-16 overflow-hidden rounded-full border border-gray-700">
+                  {/* <div className="relative h-16 w-16 overflow-hidden rounded-full border border-gray-700">
                     <Image
                       src={reviews[currentIndex].avatar}
                       alt={reviews[currentIndex].name}
                       fill
                       className="object-cover"
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <h3 className="text-xl font-bold">{reviews[currentIndex].name}</h3>
                     <p className="text-gray-400">{reviews[currentIndex].car}</p>

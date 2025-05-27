@@ -81,7 +81,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="relative h-[300px] rounded-none overflow-hidden border border-gray-800">
-                <Image src="/placeholder.svg?height=600&width=800" alt="О NEWTONE" fill className="object-cover" />
+                <Image src="/images/about.jpeg" alt="О NEWTONE" fill className="object-cover" />
               </div>
             </div>
           </div>

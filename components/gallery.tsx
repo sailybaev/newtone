@@ -1,21 +1,66 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { galleryImages } from "@/config/gallery"
 
 export function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [images, setImages] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
 
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch('/api/gallery')
+        const data = await response.json()
+        if (data.images) {
+          setImages(data.images)
+        }
+      } catch (error) {
+        console.error('Error fetching gallery images:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchImages()
+  }, [])
+
   const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % galleryImages.length)
+    setCurrentIndex((prev) => (prev + 1) % images.length)
   }
 
   const prevImage = () => {
-    setCurrentIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  if (isLoading) {
+    return (
+      <section id="gallery" className="py-16 md:py-24 bg-black">
+        <div className="container">
+          <h2 className="text-3xl font-bold tracking-tight mb-16 text-center uppercase">Галерея</h2>
+          <div className="flex justify-center items-center h-[400px]">
+            <div className="text-white">Loading...</div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (images.length === 0) {
+    return (
+      <section id="gallery" className="py-16 md:py-24 bg-black">
+        <div className="container">
+          <h2 className="text-3xl font-bold tracking-tight mb-16 text-center uppercase">Галерея</h2>
+          <div className="flex justify-center items-center h-[400px]">
+            <div className="text-white">No images found</div>
+          </div>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -34,8 +79,8 @@ export function Gallery() {
             >
               <div className="relative aspect-[16/9] overflow-hidden rounded-none border border-gray-800">
                 <Image
-                  src={galleryImages[currentIndex].src}
-                  alt={galleryImages[currentIndex].alt}
+                  src={images[currentIndex]}
+                  alt={`Gallery image ${currentIndex + 1}`}
                   fill
                   className="object-cover"
                 />

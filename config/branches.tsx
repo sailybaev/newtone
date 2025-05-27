@@ -12,7 +12,7 @@ export interface Branch {
 export const branches: Branch[] = [
   {
     id: "central",
-    label: "Первый филиал",
+    label: "На левом",
     address: "Улица Алихан Бокейхан, 18/1а",
     whatsapp: "+77785886779",
     coordinates: {
@@ -22,7 +22,7 @@ export const branches: Branch[] = [
   },
   {
     id: "north",
-    label: "Второй филиал",
+    label: "На правом",
     address: "Улица Каныш Сатпаев, 16/3",
     whatsapp: "+77712222267",
     coordinates: {

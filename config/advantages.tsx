@@ -15,7 +15,7 @@ export const advantages: Advantage[] = [
   },
   {
     icon: <MapPin className="h-6 w-6 text-green-600" />,
-    title: "Три Филиала",
+    title: "2 Филиала",
     description: "Удобное расположение для вашего комфорта",
   },
   {

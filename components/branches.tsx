@@ -6,7 +6,7 @@ import Link from "next/link"
 
 const branches = [
   {
-    name: "New Tone",
+    name: "На левом берегу",
     address: "Астана, Улица Алихан Бокейхан, 18/1а",
     phone: "+7 (778) 588-67-79",
     mapUrl: "https://2gis.kz/astana/geo/70000001023999833",
@@ -14,7 +14,7 @@ const branches = [
     whatsappUrl: "https://wa.me/77775886779"
   },
   {
-    name: "New Tone 2",
+    name: "На правом берегу",
     address: "Астана, Улица Каныш Сатпаев, 16/3",
     phone: "+7 (771) 222‒22‒67",
     mapUrl: "https://2gis.kz/astana/geo/70000001089909420",

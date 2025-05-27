@@ -25,6 +25,7 @@ import { MobileMenu } from "@/components/mobile-menu"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { ServiceCardsAlt } from "@/components/service-cards-alt"
 import { ServiceCards } from "@/components/service-cards"
+import { Header } from "@/components/header"
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -34,54 +35,20 @@ export default function Home() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  // if (!isMobile) {
-  //   return (
-  //     <div className="flex min-h-screen items-center justify-center bg-black text-white">
-  //       <div className="text-center">
-  //         <h1 className="text-2xl font-bold mb-4">Только для мобильных устройств</h1>
-  //         <p className="text-gray-400">Этот сайт доступен только на мобильных устройствах.</p>
-  //       </div>
-  //     </div>
-  //   )
-  // }
+  if (!isMobile) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-black text-white">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Только для мобильных устройств</h1>
+          <p className="text-gray-400">Этот сайт доступен только на мобильных устройствах.</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
-      <header className="sticky top-0 z-50 w-full border-b border-gray-800/40 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            {/* <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gray-700">
-              <Image src="/logo.png" alt="NEWTONE" width={40} height={40} className="object-cover" />
-            </div> */}
-            <span className="text-lg font-medium tracking-wider">NEWTONE</span> 
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="#services" className="text-gray-400 hover:text-white transition-colors">
-              Услуги
-            </Link>
-            <Link href="#about" className="text-gray-400 hover:text-white transition-colors">
-              О Нас
-            </Link>
-            <Link href="#gallery" className="text-gray-400 hover:text-white transition-colors">
-              Галерея
-            </Link>
-            <Link href="#contact" className="text-gray-400 hover:text-white transition-colors">
-              Контакты
-            </Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMobileMenu}
-            className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-      </header>
+      <Header/>
 
       <AnimatePresence>
         {mobileMenuOpen && <MobileMenu onClose={toggleMobileMenu} />}
@@ -123,7 +90,7 @@ export default function Home() {
         <Gallery />
         {/* <Partners /> */}
         <Reviews />
-        <Team />
+        {/* <Team /> */}
         {/* <LocationMap /> */}
         <section id="contact" className="py-16 md:py-24 bg-zinc-900">
           <div className="container">
@@ -162,11 +129,11 @@ export default function Home() {
       </main>
       <footer className="border-t border-gray-800 bg-black text-white relative">
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-30"
           style={{
-            backgroundImage: `url('/carbon-fiber.png')`,
-            backgroundSize: "200px",
-            backgroundRepeat: "repeat",
+            backgroundImage: `url('/carbon.jpg')`,
+            backgroundSize: "40%",
+            backgroundPosition: "center",
           }}
         ></div>
         <div className="container relative py-12">
@@ -207,31 +174,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            {/* <div>
-              <h3 className="text-lg font-semibold mb-4">Услуги</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Комплексный Детейлинг
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Химчистка Салона
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Полировка Кузова
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Керамическое Покрытие
-                  </Link>
-                </li>
-              </ul>
-            </div> */}
+          
             <div>
               <h3 className="text-lg font-semibold mb-4">Контакты</h3>
               <ul className="space-y-2">

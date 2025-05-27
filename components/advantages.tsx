@@ -5,7 +5,7 @@ import { advantages } from "@/config/advantages"
 
 export function Advantages() {
   return (
-    <section className="py-16 md:py-24 bg-black">
+    <section id="why-us" className="py-16 md:py-24 bg-black">
       <div className="container">
         <h2 className="text-3xl font-bold tracking-tight mb-16 text-center uppercase">Наши Преимущества</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

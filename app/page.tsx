@@ -26,6 +26,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { ServiceCardsAlt } from "@/components/service-cards-alt"
 import { ServiceCards } from "@/components/service-cards"
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -127,74 +128,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="border-t border-gray-800 bg-black text-white relative">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `url('/carbon.jpg')`,
-            backgroundSize: "40%",
-            backgroundPosition: "center",
-          }}
-        ></div>
-        <div className="container relative py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                {/* <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gray-700">
-                  <Image src="/logo.png" alt="NEWTONE" width={40} height={40} className="object-cover" />
-                </div> */}
-                <span className="text-lg font-medium tracking-wider">NEWTONE</span>
-              </div>
-              <p className="text-sm text-gray-400 mt-4">
-                Премиальные услуги детейлинга для тех, кто ценит совершенство.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Быстрые Ссылки</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Услуги
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#about" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    О Нас
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#gallery" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Галерея
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#contact" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Контакты
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Контакты</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-green-600" />
-                  <span className="text-sm text-gray-400">+7 (778) 588-67-79</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-green-600" />
-                  <span className="text-sm text-gray-400">+7 (771) 222‒22‒67</span>
-                </li>
-           
-              </ul>
-            </div>
-          </div>
-          <div className="mt-12 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
-            <p>© {new Date().getFullYear()} NEWTONE. Все права защищены.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

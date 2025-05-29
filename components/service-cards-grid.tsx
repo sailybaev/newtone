@@ -1,6 +1,5 @@
 "use client"
 import Image from "next/image"
-import Link from "next/link"
 import { motion } from "framer-motion"
 import { services } from "@/config/services"
 
@@ -19,24 +18,22 @@ export function ServiceCardsGrid() {
               transition={{ duration: 0.5 }}
               className={`relative border border-gray-800 md:col-span-${service.cols}`}
             >
-              <Link href={service.link} className="block">
-                <div className="relative">
-                  <div className="aspect-video overflow-hidden">
-                    <Image
-                      src={service.image || "/placeholder.svg"}
-                      alt={service.title}
-                      fill
-                      className="h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                    />
-                  </div>
+              <div className="relative">
+                <div className="aspect-video overflow-hidden">
+                  <Image
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    fill
+                    className="h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  />
                 </div>
-                <div className="p-4 md:p-6 flex justify-between items-center">
-                  <h3 className="text-lg md:text-xl font-bold">{service.title}</h3>
-                  <div className="flex items-center gap-2">
-                    <span className="text-base md:text-xl font-medium whitespace-nowrap">{service.price}</span>
-                  </div>
+              </div>
+              <div className="p-4 md:p-6 flex justify-between items-center">
+                <h3 className="text-lg md:text-xl font-bold">{service.title}</h3>
+                <div className="flex items-center gap-2">
+                  <span className="text-base md:text-xl font-medium whitespace-nowrap">{service.price}</span>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>

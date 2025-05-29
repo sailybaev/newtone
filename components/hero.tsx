@@ -19,15 +19,16 @@ export function Hero() {
   }
 
   return (
-    <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
+    <section className="relative h-[85vh] min-h-[700px] flex items-center overflow-hidden pt-20">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/placeholder.svg?height=1080&width=1920"
+          src="/images/gifka.gif"
           alt="Премиальный детейлинг автомобилей"
           fill
           priority
-          className="object-cover brightness-50"
+          className="object-cover"
         />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
       <div className="container relative z-10">
         <motion.div
@@ -37,8 +38,8 @@ export function Hero() {
           className="max-w-3xl"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-10 uppercase tracking-wider leading-tight">
-            Детейлинг Студия <br />
-            <span className="text-5xl md:text-7xl">NEWTONE</span>
+            Детейлинг центр <br />
+            <span className="text-5xl md:text-7xl">NEW TONE</span>
           </h1>
           <p className="text-lg md:text-xl mb-10 text-gray-300 max-w-xl">
             Профессиональные услуги детейлинга, которые преображают ваш автомобиль с тщательным вниманием к деталям и

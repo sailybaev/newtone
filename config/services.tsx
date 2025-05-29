@@ -37,6 +37,15 @@ export const services: Service[] = [
     cols: 1,
     category: "detailing"
   },
+  // { // done
+  //   id: "case",
+  //   title: "ПОШИВ ЧЕХЛОВ",
+  //   image: "/images/case.jpeg",
+  //   price: "цена по запросу",
+  //   link: "#",
+  //   cols: 1,
+  //   category: "detailing"
+  // },
   { // done
     id: "interior-upholstery",
     title: "ПЕРЕТЯЖКА ИНТЕРЬЕРА",
@@ -67,7 +76,7 @@ export const services: Service[] = [
   {
     id: "windshield-protection",
     title: "ЗАЩИТА ЛОБОВОГО СТЕКЛА",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/windshield.png",
     price: "от 100 000 ₸",
     link: "#",
     cols: 1,
@@ -76,7 +85,7 @@ export const services: Service[] = [
   {
     id: "tinting",
     title: "ТОНИРОВКА",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/tonirovka.jpg",
     price: "от 35 000 ₸",
     link: "#",
     cols: 1,
@@ -103,7 +112,7 @@ export const services: Service[] = [
   {
     id: "hydro-dipping",
     title: "АКВАПРИНТ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/aquaprint.jpeg",
     price: "цена по запросу",
     link: "#",
     cols: 1,
@@ -112,7 +121,7 @@ export const services: Service[] = [
   {
     id: "pdr",
     title: "ВЫПРАВЛЕНИЕ ВМЯТИН (PDR)",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/vmyatina.jpg",
     price: "от 10 000 ₸",
     link: "#",
     cols: 2,
@@ -121,7 +130,7 @@ export const services: Service[] = [
   { 
     id: "body-repair",
     title: "КУЗОВНОЙ РЕМОНТ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/body.jpg",
     price: "цена по запросу",
     link: "#",
     cols: 1,
@@ -130,7 +139,7 @@ export const services: Service[] = [
   {
     id: "painting",
     title: "ПОКРАСКА АВТО",
-    image: "/images/pokraska.jpeg",
+    image: "/images/pokraska2.jpg",
     price: "цена по запросу",
     link: "#",
     cols: 1,
@@ -139,7 +148,7 @@ export const services: Service[] = [
   {
     id: "alarm-installation",
     title: "УСТАНОВКА СИГНАЛИЗАЦИИ",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/alarm.jpg",
     price: "цена по запросу",
     link: "#",
     cols: 1,

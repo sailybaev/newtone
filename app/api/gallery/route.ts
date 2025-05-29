@@ -7,7 +7,6 @@ export async function GET() {
     const galleryPath = path.join(process.cwd(), 'public/images/gallery')
     const files = fs.readdirSync(galleryPath)
     
-    // Filter for image files and create full paths
     const images = files
       .filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file))
       .map(file => `/images/gallery/${file}`)

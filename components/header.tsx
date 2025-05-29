@@ -38,11 +38,11 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? "bg-black/95 py-4 before:absolute before:inset-0 before:bg-[url('/carbon.jpg')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-100 before:-z-10" 
+            ? "bg-black/90 py-4 before:absolute before:inset-0 before:bg-[url('/carbon.jpg')] before:opacity-60 before:bg-cover before:bg-center before:bg-no-repeat before:opacity-100 before:-z-10" 
             : "bg-transparent py-6"
         }`}
       >
-        <div
+        {/* <div
           className={`absolute inset-0 transition-opacity duration-300 ${
             isScrolled ? "opacity-20" : "opacity-0"
           }`}
@@ -53,11 +53,11 @@ export function Header() {
             backgroundPosition: "center",
             zIndex: -1
           }}
-        ></div>
+        ></div> */}
         <div className="container">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-xl font-bold tracking-wider text-white">NEWTONE</span>
+              <span className="text-xl font-bold tracking-wider text-white">NEW TONE</span>
             </Link>
 
             {/* Desktop Navigation */}

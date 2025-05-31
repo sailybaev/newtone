@@ -4,6 +4,10 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'NEWTONE - Детейлинг Студия',
   description: 'Профессиональные услуги детейлинга, которые преображают ваш автомобиль с тщательным вниманием к деталям и премиальными продуктами.',
+  icons: {
+    icon: '/fav.jpg',
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export default function RootLayout({

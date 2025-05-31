@@ -200,12 +200,27 @@ export function CalculateForm() {
                           <SelectValue placeholder="Выберите марку" />
                         </SelectTrigger>
                         <SelectContent className="bg-zinc-800 border-gray-700 w-full">
+                          <SelectItem value="toyota" className="text-white text-sm">Toyota</SelectItem>
+                          <SelectItem value="lexus" className="text-white text-sm">Lexus</SelectItem>
+                          <SelectItem value="nissan" className="text-white text-sm">Nissan</SelectItem>
+                          <SelectItem value="honda" className="text-white text-sm">Honda</SelectItem>
+                          <SelectItem value="mitsubishi" className="text-white text-sm">Mitsubishi</SelectItem>
+                          <SelectItem value="suzuki" className="text-white text-sm">Suzuki</SelectItem>
                           <SelectItem value="bmw" className="text-white text-sm">BMW</SelectItem>
                           <SelectItem value="mercedes" className="text-white text-sm">Mercedes-Benz</SelectItem>
                           <SelectItem value="audi" className="text-white text-sm">Audi</SelectItem>
-                          <SelectItem value="toyota" className="text-white text-sm">Toyota</SelectItem>
-                          <SelectItem value="honda" className="text-white text-sm">Honda</SelectItem>
+                          <SelectItem value="volkswagen" className="text-white text-sm">Volkswagen</SelectItem>
+                          <SelectItem value="hyundai" className="text-white text-sm">Hyundai</SelectItem>
+                          <SelectItem value="kia" className="text-white text-sm">Kia</SelectItem>
+                          <SelectItem value="chevrolet" className="text-white text-sm">Chevrolet</SelectItem>
                           <SelectItem value="ford" className="text-white text-sm">Ford</SelectItem>
+                          <SelectItem value="land_rover" className="text-white text-sm">Land Rover</SelectItem>
+                          <SelectItem value="range_rover" className="text-white text-sm">Range Rover</SelectItem>
+                          <SelectItem value="porsche" className="text-white text-sm">Porsche</SelectItem>
+                          <SelectItem value="volvo" className="text-white text-sm">Volvo</SelectItem>
+                          <SelectItem value="jaguar" className="text-white text-sm">Jaguar</SelectItem>
+                          <SelectItem value="infiniti" className="text-white text-sm">Infiniti</SelectItem>
+                          <SelectItem value="acura" className="text-white text-sm">Acura</SelectItem>
                           <SelectItem value="other" className="text-white text-sm">Другое</SelectItem>
                         </SelectContent>
                       </Select>

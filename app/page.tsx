@@ -59,14 +59,13 @@ export default function Home() {
         <Advantages />
         <ServiceCardsGrid/>
         <CalculateForm />
-        {/*<BeforeAfterSlider /> */}
         <WhyChooseUs />
         <Branches />
-        <section id="about" className="py-16 md:py-24 bg-zinc-900">
+        <section id="about" className="py-16 md:py-24 bg-zinc-900" itemScope itemType="https://schema.org/AutoWash">
           <div className="container">
             <h2 className="text-3xl font-bold tracking-tight mb-8 text-center uppercase">О Нас</h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
+              <div itemProp="description">
                 <p className="text-gray-400 mb-4">
                   NEWTONE - это премиальный центр детейлинга, предоставляющий исключительный сервис и результаты. Имея
                   многолетний опыт и страсть к совершенству, наша команда профессионалов использует только
@@ -80,7 +79,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="relative h-[300px] rounded-none overflow-hidden border border-gray-800">
-                <Image src="/images/about.jpeg" alt="О NEWTONE" fill className="object-cover" />
+                <Image src="/images/about.jpeg" alt="NEWTONE - Премиальный Детейлинг Центр в Астане" fill className="object-cover" itemProp="image" />
               </div>
             </div>
           </div>
@@ -88,38 +87,31 @@ export default function Home() {
         <Faq />
         <ProcessSteps />
         <Gallery />
-        {/* <Partners /> */}
         <Reviews />
-        {/* <Team /> */}
-        {/* <LocationMap /> */}
-        <section id="contact" className="py-16 md:py-24 bg-zinc-900">
+        <section id="contact" className="py-16 md:py-24 bg-zinc-900" itemScope itemType="https://schema.org/LocalBusiness">
           <div className="container">
             <h2 className="text-3xl font-bold tracking-tight mb-8 text-center uppercase">Контакты</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-4">Связаться с Нами</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3" itemProp="telephone">
                     <Phone className="h-5 w-5 text-green-600" />
                     <span>+7 (778) 588-67-79</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3" itemProp="telephone">
                     <Phone className="h-5 w-5 text-green-600" />
                     <span>+7 (771) 222‒22‒67</span>
                   </div>
-                  {/* <div className="flex items-center gap-3">
-                    <MapPin className="h-5 w-5 text-green-600" />
-                    <span>Астана, ул. Примерная, 123</span>
-                  </div> */}
                 </div>
                 <div className="mt-6">
                   <h4 className="text-lg font-medium mb-3">Мы в Соцсетях</h4>
                   <div className="flex gap-4">
-                    <Link href="#" className="text-gray-400 hover:text-green-600 transition-colors">
+                    <Link href="#" className="text-gray-400 hover:text-green-600 transition-colors" itemProp="sameAs">
                       <Instagram className="h-6 w-6" />
                       <span className="sr-only">Instagram</span>
                     </Link>
-                    <Link href="https://www.tiktok.com/@new.tone.ast" className="text-gray-400 hover:text-green-600 transition-colors">
+                    <Link href="https://www.tiktok.com/@new.tone.ast" className="text-gray-400 hover:text-green-600 transition-colors" itemProp="sameAs">
                       <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
                       </svg>

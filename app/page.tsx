@@ -35,16 +35,7 @@ export default function Home() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  if (!isMobile) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-black text-white">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Только для мобильных устройств</h1>
-          <p className="text-gray-400">Этот сайт доступен только на мобильных устройствах.</p>
-        </div>
-      </div>
-    )
-  }
+  
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">

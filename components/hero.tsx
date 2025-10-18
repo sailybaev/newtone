@@ -19,7 +19,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative h-[85vh] min-h-[700px] flex items-center overflow-hidden pt-20">
+    <section className="relative h-[100vh] min-h-[700px] flex items-center overflow-hidden pt-20">
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/gifka.gif"
@@ -46,14 +46,13 @@ export function Hero() {
             премиальными продуктами.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={scrollToCalculate}
+            <a
+              href={`https://wa.me/+77785886779?text=Здравствуйте,%20я%20хочу%20получить%20консультацию`}
+              target="_blank"
               className="inline-flex h-12 items-center justify-center rounded-none border border-green-800 bg-transparent px-8 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-green-800 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring uppercase tracking-wider"
             >
-              Рассчитать Стоимость
-            </motion.button>
+              Получить консультацию
+            </a>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

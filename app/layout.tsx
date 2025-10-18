@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Script from 'next/script'
 import type { ReactNode } from 'react'
 import './globals.css'
 
@@ -48,17 +49,26 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang='ru'>
 			<head>
-				<script src='https://maps.api.2gis.ru/2.0/loader.js?pkg=full'></script>
 				<link rel='preconnect' href='https://fonts.googleapis.com' />
 				<link
 					rel='preconnect'
 					href='https://fonts.gstatic.com'
 					crossOrigin='anonymous'
 				/>
+			</head>
+			<body>
+				{children}
+
+				{/* 2GIS Maps */}
+				<Script
+					src='https://maps.api.2gis.ru/2.0/loader.js?pkg=full'
+					strategy='afterInteractive'
+				/>
 
 				{/* Yandex.Metrika counter */}
-				<script
-					type='text/javascript'
+				<Script
+					id='yandex-metrika'
+					strategy='afterInteractive'
 					dangerouslySetInnerHTML={{
 						__html: `
               (function(m,e,t,r,i,k,a){
@@ -81,8 +91,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 						/>
 					</div>
 				</noscript>
-			</head>
-			<body>{children}</body>
+			</body>
 		</html>
 	)
 }

@@ -2,6 +2,7 @@
 
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
+import { MobileFloatingFooter } from '@/components/mobile-floating-footer'
 import { getServiceDetails } from '@/config/service-details'
 import { services } from '@/config/services'
 import { motion } from 'framer-motion'
@@ -66,10 +67,11 @@ export default function ServicePage({ params }: ServicePageProps) {
 							</div>
 							<div className='flex flex-col sm:flex-row gap-4'>
 								<a
-									href={`https://wa.me/+77785886779?text=Здравствуйте,%20я%20хочу%20получить%20консультацию%20по%20услуге%20${encodeURIComponent(service.title)}`}
+									href={`https://wa.me/+77785886779?text=Здравствуйте,%20я%20хочу%20получить%20консультацию%20по%20услуге%20${encodeURIComponent(
+										service.title
+									)}`}
 									className='inline-flex h-12 items-center justify-center rounded-none border border-green-800 bg-transparent px-8 py-3 text-sm font-medium text-white shadow transition-colors hover:bg-green-800 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring uppercase tracking-wider'
 								>
-
 									Записаться
 								</a>
 								<motion.button
@@ -131,6 +133,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 			</main>
 
 			<Footer />
+			<MobileFloatingFooter />
 		</div>
 	)
 }

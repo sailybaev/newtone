@@ -15,6 +15,7 @@ import { Footer } from '@/components/footer'
 import { Gallery } from '@/components/gallery'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/hero'
+import { MobileFloatingFooter } from '@/components/mobile-floating-footer'
 import { MobileMenu } from '@/components/mobile-menu'
 import { ProcessSteps } from '@/components/process-steps'
 import { Reviews } from '@/components/reviews'
@@ -145,6 +146,7 @@ export default function Home() {
 			</main>
 			<Footer />
 			<CalculateForm />
+			<MobileFloatingFooter />
 		</div>
 	)
 }

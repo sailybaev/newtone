@@ -1,6 +1,6 @@
 export function getServiceDetails(serviceId: string) {
 	const details: Record<string, React.ReactElement> = {
-		'chemical-cleaning': (
+		'himchistka-salona': (
 			<>
 				<p>
 					Профессиональная химчистка салона автомобиля - это глубокая очистка
@@ -20,7 +20,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		polishing: (
+		'polirovka-kuzova': (
 			<>
 				<p>
 					Полировка кузова автомобиля - это процесс восстановления и защиты
@@ -39,7 +39,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'leather-restoration': (
+		'restavratsiya-kozhi': (
 			<>
 				<p>
 					Реставрация кожи - это восстановление кожаных поверхностей салона
@@ -58,7 +58,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'interior-upholstery': (
+		'peretyazhka-interera': (
 			<>
 				<p>
 					Перетяжка интерьера автомобиля - это полное обновление салона с
@@ -77,7 +77,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'steering-wheel': (
+		'peretyazhka-rulya': (
 			<>
 				<p>
 					Перетяжка руля - это обновление рулевого колеса с использованием
@@ -95,7 +95,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		wrapping: (
+		'okleyka-plenkoy': (
 			<>
 				<p>
 					Оклейка автомобиля пленкой - это современный способ защиты и изменения
@@ -114,7 +114,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'windshield-protection': (
+		'zashchita-lobovogo-stekla': (
 			<>
 				<p>
 					Защита лобового стекла - это нанесение специальной пленки, которая
@@ -132,7 +132,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		tinting: (
+		tonirovka: (
 			<>
 				<p>
 					Тонировка стекол автомобиля - это нанесение специальной пленки,
@@ -150,7 +150,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'sound-insulation': (
+		shumoizolyatsiya: (
 			<>
 				<p>
 					Шумоизоляция автомобиля - это комплекс работ по снижению уровня шума в
@@ -168,7 +168,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'interior-protection': (
+		'zashchita-plastika-salona': (
 			<>
 				<p>
 					Защита пластика салона - это нанесение специальных покрытий на
@@ -186,7 +186,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'hydro-dipping': (
+		akvaprint: (
 			<>
 				<p>
 					Аквапринт (гидрография) - это технология переноса изображения на
@@ -205,7 +205,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		pdr: (
+		'vypravlenie-vmyatin-pdr': (
 			<>
 				<p>
 					PDR (Paintless Dent Repair) - это технология удаления вмятин без
@@ -224,7 +224,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'body-repair': (
+		'kuzovnoy-remont': (
 			<>
 				<p>
 					Кузовной ремонт - это комплекс работ по восстановлению геометрии и
@@ -242,7 +242,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		painting: (
+		'pokraska-avto': (
 			<>
 				<p>
 					Покраска автомобиля - это профессиональное нанесение лакокрасочного
@@ -261,7 +261,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		'alarm-installation': (
+		'ustanovka-signalizatsii': (
 			<>
 				<p>
 					Установка автомобильной сигнализации - это монтаж современных охранных
@@ -280,7 +280,7 @@ export function getServiceDetails(serviceId: string) {
 				</ul>
 			</>
 		),
-		lighting: (
+		'ustanovka-linz': (
 			<>
 				<p>
 					Установка линз и улучшение автосвета - это модернизация системы

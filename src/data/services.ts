@@ -3,7 +3,7 @@ export interface Service {
   name: string;
   category: 'detailing' | 'repair' | 'installation' | 'protection';
 }
-
+//commit 
 export const services: Service[] = [
   {
     id: 'chemical-cleaning',

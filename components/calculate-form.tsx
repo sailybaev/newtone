@@ -3,30 +3,32 @@
 import type React from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { X } from 'lucide-react'
+import { CheckCircle, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from '@/components/ui/select'
-import { branches } from '@/config/branches'
-import { services } from '@/config/services'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 export function CalculateForm() {
 	const [isOpen, setIsOpen] = useState(false)
 	const [formData, setFormData] = useState({
 		name: '',
-		branch: '',
-		services: [] as string[],
+		phone: '',
 	})
+	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [showSuccessDialog, setShowSuccessDialog] = useState(false)
+	const isMobile = useIsMobile()
 
 	// Listen for custom event to open the form
 	useEffect(() => {
@@ -35,43 +37,6 @@ export function CalculateForm() {
 		return () =>
 			window.removeEventListener('openCalculateForm', handleOpenCalculate)
 	}, [])
-
-	const calculateTotal = () => {
-		let total = 0
-		let hasPriceInquiry = false
-
-		formData.services.forEach(serviceId => {
-			const service = services.find(s => s.id === serviceId)
-			if (service) {
-				if (service.price === 'цена по запросу') {
-					hasPriceInquiry = true
-				} else {
-					// Extract numeric value from price string (e.g., "от 50 000 ₸" -> 50000)
-					const priceMatch = service.price.match(/от\s*(\d[\d\s]*)/)
-					if (priceMatch) {
-						const price = parseInt(priceMatch[1].replace(/\s/g, ''))
-						total += price
-					}
-				}
-			}
-		})
-
-		return { total, hasPriceInquiry }
-	}
-
-	const handleServiceChange = (serviceId: string, checked: boolean) => {
-		if (checked) {
-			setFormData({
-				...formData,
-				services: [...formData.services, serviceId],
-			})
-		} else {
-			setFormData({
-				...formData,
-				services: formData.services.filter(id => id !== serviceId),
-			})
-		}
-	}
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -83,45 +48,76 @@ export function CalculateForm() {
 		})
 	}
 
-	const handleSelectChange = (name: string, value: string) => {
-		setFormData({
-			...formData,
-			[name]: value,
-		})
-	}
-
 	const generateWhatsAppMessage = () => {
-		const selectedServices = formData.services
-			.map(id => services.find(service => service.id === id)?.title)
-			.filter(Boolean)
-			.join(', ')
-
-		const selectedBranch = branches.find(
-			branch => branch.id === formData.branch
-		)
-
 		const message = `
 Здравствуйте, NEWTONE!
 
 Хочу узнать стоимость детейлинга:
 
 Имя: ${formData.name}
-Филиал: ${
-			selectedBranch
-				? selectedBranch.label + ' (' + selectedBranch.address + ')'
-				: 'Не выбран'
-		}
-Услуги: ${selectedServices}
+Телефон: ${formData.phone}
 
 Пожалуйста, сообщите мне стоимость. Спасибо!
     `.trim()
 
 		const encodedMessage = encodeURIComponent(message)
-		const whatsappNumber = selectedBranch?.whatsapp || '+77785886779'
+		const whatsappNumber = '+77712222267'
 		window.open(
 			`https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
 			'_blank'
 		)
+	}
+
+	const sendToTelegram = async () => {
+		if (!formData.name.trim()) {
+			alert('Пожалуйста, укажите ваше имя')
+			return
+		}
+
+		if (!formData.phone.trim()) {
+			alert('Пожалуйста, укажите номер телефона')
+			return
+		}
+
+		setIsSubmitting(true)
+
+		try {
+			const response = await fetch('/api/send-telegram', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name: formData.name,
+					thema: 'Заявка на расчет стоимости детейлинга',
+					tell: formData.phone,
+				}),
+			})
+
+			if (response.ok) {
+				setShowSuccessDialog(true)
+				setIsOpen(false)
+				setFormData({
+					name: '',
+					phone: '',
+				})
+			} else {
+				throw new Error('Ошибка при отправке')
+			}
+		} catch (error) {
+			console.error('Error sending to Telegram:', error)
+			alert('Произошла ошибка при отправке. Попробуйте еще раз.')
+		} finally {
+			setIsSubmitting(false)
+		}
+	}
+
+	const handleSubmit = () => {
+		if (isMobile) {
+			generateWhatsAppMessage()
+		} else {
+			sendToTelegram()
+		}
 	}
 
 	return (
@@ -171,90 +167,29 @@ export function CalculateForm() {
 									</div>
 
 									<div className='space-y-2'>
-										<Label htmlFor='branch'>Выберите Филиал</Label>
-										<Select
-											onValueChange={value =>
-												handleSelectChange('branch', value)
-											}
-											value={formData.branch}
-										>
-											<SelectTrigger className='bg-zinc-800 border-gray-700 rounded-none text-white w-full text-sm'>
-												<SelectValue placeholder='Выберите филиал' />
-											</SelectTrigger>
-											<SelectContent className='bg-zinc-800 border-gray-700 w-full'>
-												{branches.map(branch => (
-													<SelectItem
-														key={branch.id}
-														value={branch.id}
-														className='text-white text-sm'
-													>
-														{branch.label} - {branch.address}
-													</SelectItem>
-												))}
-											</SelectContent>
-										</Select>
+										<Label htmlFor='phone'>Номер Телефона</Label>
+										<Input
+											id='phone'
+											name='phone'
+											type='tel'
+											placeholder='+7 (777) 123-45-67'
+											value={formData.phone}
+											onChange={handleChange}
+											className='bg-zinc-800 border-gray-700 rounded-none'
+										/>
 									</div>
-
-									<div className='space-y-3'>
-										<Label className='text-base font-medium'>Услуги</Label>
-										<div className='grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-zinc-800/50 rounded-none border border-gray-700'>
-											{services.map(service => (
-												<div
-													key={service.id}
-													className='flex items-start space-x-3 p-2 hover:bg-zinc-700/50 transition-colors rounded-none'
-												>
-													<Checkbox
-														id={service.id}
-														checked={formData.services.includes(service.id)}
-														onCheckedChange={checked =>
-															handleServiceChange(
-																service.id,
-																checked as boolean
-															)
-														}
-														className='mt-1 border-gray-600 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600'
-													/>
-													<Label
-														htmlFor={service.id}
-														className='text-sm font-normal leading-tight cursor-pointer hover:text-green-400 transition-colors'
-													>
-														{service.title}
-													</Label>
-												</div>
-											))}
-										</div>
-									</div>
-
-									{formData.services.length > 0 && (
-										<div className='p-4 bg-zinc-800/50 rounded-none border border-gray-700 mb-4'>
-											<div className='text-center'>
-												{(() => {
-													const { total, hasPriceInquiry } = calculateTotal()
-													return (
-														<>
-															{total > 0 && (
-																<p className='text-lg font-semibold text-green-400'>
-																	Итого: от {total.toLocaleString()} ₸
-																</p>
-															)}
-															{hasPriceInquiry && (
-																<p className='text-sm text-gray-400 mt-1'>
-																	* Некоторые услуги требуют уточнения цены
-																</p>
-															)}
-														</>
-													)
-												})()}
-											</div>
-										</div>
-									)}
 
 									<Button
 										type='button'
-										className='w-full rounded-none bg-green-800 hover:bg-green-700 text-white uppercase tracking-wider'
-										onClick={generateWhatsAppMessage}
+										className='w-full rounded-none bg-green-800 hover:bg-green-700 text-white uppercase tracking-wider disabled:opacity-50'
+										onClick={handleSubmit}
+										disabled={isSubmitting}
 									>
-										Получить Расчет в WhatsApp
+										{isSubmitting
+											? 'Отправка...'
+											: isMobile
+											? 'Получить Расчет'
+											: 'Получить Расчет'}
 									</Button>
 								</form>
 							</div>
@@ -262,6 +197,33 @@ export function CalculateForm() {
 					</motion.div>
 				)}
 			</AnimatePresence>
+
+			{/* Success Dialog */}
+			<AlertDialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+				<AlertDialogContent className='bg-zinc-900 border-gray-800 text-white max-w-md'>
+					<AlertDialogHeader className='text-center'>
+						<div className='mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-600/20'>
+							<CheckCircle className='h-8 w-8 text-green-400' />
+						</div>
+						<AlertDialogTitle className='text-xl font-semibold text-green-400'>
+							Заявка успешно отправлена!
+						</AlertDialogTitle>
+						<AlertDialogDescription className='text-gray-300 mt-2'>
+							Спасибо за ваш запрос! Наш менеджер свяжется с вами в ближайшее
+							время для уточнения деталей и предоставления точной стоимости
+							услуг.
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter>
+						<AlertDialogAction
+							className='w-full bg-green-600 hover:bg-green-700 text-white rounded-none uppercase tracking-wider'
+							onClick={() => setShowSuccessDialog(false)}
+						>
+							Понятно
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
 		</>
 	)
 }

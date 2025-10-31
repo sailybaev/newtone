@@ -124,11 +124,11 @@ export function Header() {
 						{/* Contact Button */}
 						<div className='hidden md:flex items-center gap-6'>
 							<a
-								href='tel:+77775886779'
+								href='tel:+77712222267'
 								className='flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-200'
 							>
 								<Phone className='h-5 w-5' />
-								<span>+7 (777) 588-67-79</span>
+								<span>+7 (771) 222-22-67</span>
 							</a>
 							<button
 								onClick={() =>

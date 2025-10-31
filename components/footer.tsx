@@ -94,12 +94,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Контакты</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-green-600" />
-                <span className="text-sm text-gray-400">
-                  +7 (778) 588-67-79
-                </span>
-              </li>
+              
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-green-600" />
                 <span className="text-sm text-gray-400">

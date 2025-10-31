@@ -1,20 +1,42 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { services } from '@/config/services'
 import { MessageCircle, Phone } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export function MobileFloatingFooter() {
+	const pathname = usePathname()
+
+	const getCurrentService = () => {
+		if (pathname === '/') return null
+
+		// Extract service ID from pathname (e.g., "/himchistka-salona" -> "himchistka-salona")
+		const serviceId = pathname.slice(1)
+		return services.find(service => service.id === serviceId)
+	}
+
 	const handleWhatsApp = () => {
 		// Default to first branch WhatsApp number
-		const whatsappNumber = '+77785886779'
-		const message = encodeURIComponent(
-			'Здравствуйте! Хочу узнать подробнее о ваших услугах.'
-		)
+		const whatsappNumber = '+77712222267'
+		const currentService = getCurrentService()
+
+		let message: string
+		if (currentService) {
+			message = encodeURIComponent(
+				`Здравствуйте! Хочу записаться на услугу "${currentService.title}". Подскажите, пожалуйста, подробности.`
+			)
+		} else {
+			message = encodeURIComponent(
+				'Здравствуйте! Хочу узнать подробнее о ваших услугах.'
+			)
+		}
+
 		window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank')
 	}
 
 	const handleCall = () => {
-		window.location.href = 'tel:+77785886779'
+		window.location.href = 'tel:+77712222267'
 	}
 
 	return (

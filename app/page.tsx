@@ -102,10 +102,7 @@ export default function Home() {
 							<div>
 								<h3 className='text-xl font-semibold mb-4'>Связаться с Нами</h3>
 								<div className='space-y-4'>
-									<div className='flex items-center gap-3' itemProp='telephone'>
-										<Phone className='h-5 w-5 text-green-600' />
-										<span>+7 (778) 588-67-79</span>
-									</div>
+									
 									<div className='flex items-center gap-3' itemProp='telephone'>
 										<Phone className='h-5 w-5 text-green-600' />
 										<span>+7 (771) 222‒22‒67</span>

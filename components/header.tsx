@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import { MobileMenu } from '@/components/mobile-menu'
+import { services } from '@/config/services'
 
 export function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -63,15 +64,61 @@ export function Header() {
 
 						{/* Desktop Navigation */}
 						<nav className='hidden md:flex items-center gap-8'>
-							{menuItems.map(item => (
-								<Link
-									key={item.href}
-									href={item.href}
-									className='text-gray-300 hover:text-white transition-colors duration-200 font-medium'
-								>
-									{item.label}
-								</Link>
-							))}
+							{/* Services dropdown */}
+							<div className='relative group'>
+								<button className='text-gray-300 hover:text-white transition-colors duration-200 font-medium flex items-center gap-2'>
+									Услуги
+									<svg
+										className='h-3 w-3 text-gray-300'
+										viewBox='0 0 20 20'
+										fill='none'
+										stroke='currentColor'
+									>
+										<path
+											d='M6 8l4 4 4-4'
+											strokeWidth='1.5'
+											strokeLinecap='round'
+											strokeLinejoin='round'
+										/>
+									</svg>
+								</button>
+								<div className='absolute left-0 mt-2 w-64 bg-zinc-900 border border-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 transform -translate-y-1 group-hover:translate-y-0 transition-all pointer-events-none group-hover:pointer-events-auto z-50'>
+									<div className='py-2'>
+										{services.map(s => {
+											const title = (s as any).title || (s as any).name || s.id
+											const href = (s as any).link || `/${s.id}`
+											return (
+												<Link
+													key={s.id}
+													href={href}
+													className='block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white'
+												>
+													{title}
+												</Link>
+											)
+										})}
+										<Link
+											href='#services'
+											className='block px-4 py-2 text-sm text-gray-400 hover:bg-gray-800 hover:text-white border-t border-gray-800'
+										>
+											Все услуги
+										</Link>
+									</div>
+								</div>
+							</div>
+
+							{/* Other nav items */}
+							{menuItems
+								.filter(i => i.href !== '#services')
+								.map(item => (
+									<Link
+										key={item.href}
+										href={item.href}
+										className='text-gray-300 hover:text-white transition-colors duration-200 font-medium'
+									>
+										{item.label}
+									</Link>
+								))}
 						</nav>
 
 						{/* Contact Button */}

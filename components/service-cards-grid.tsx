@@ -21,7 +21,7 @@ export function ServiceCardsGrid() {
 							transition={{ duration: 0.5 }}
 							className={`relative border border-gray-800 md:col-span-${service.cols}`}
 						>
-							<Link href={service.link} className='block group'>
+							<Link href={service.link} rel='canonical' className='block group'>
 								<div className='relative'>
 									<div className='aspect-video overflow-hidden'>
 										<Image

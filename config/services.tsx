@@ -16,7 +16,7 @@ export const services: Service[] = [
 		image: '/images/himsalon.jpeg',
 		price: 'от 50 000 ₸',
 		link: '/himchistka-salona',
-		cols: 2,
+		cols: 1,
 		category: 'detailing',
 	},
 	{
@@ -74,7 +74,7 @@ export const services: Service[] = [
 		image: '/images/plenka.jpeg',
 		price: 'от 250 000 ₸',
 		link: '/okleyka-plenkoy',
-		cols: 2,
+		cols: 1,
 		category: 'protection',
 	},
 	{
@@ -129,7 +129,7 @@ export const services: Service[] = [
 		image: '/images/vmyatina.jpg',
 		price: 'от 10 000 ₸',
 		link: '/vypravlenie-vmyatin-pdr',
-		cols: 2,
+		cols: 1,
 		category: 'repair',
 	},
 	{

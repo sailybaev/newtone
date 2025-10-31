@@ -1,8 +1,12 @@
 'use client'
 
+import { Advantages } from '@/components/advantages'
+import { Branches } from '@/components/branches'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { MobileFloatingFooter } from '@/components/mobile-floating-footer'
+import { ServiceCardsGrid } from '@/components/service-cards-grid'
+import { WhyChooseUs } from '@/components/why-choose-us'
 import { getServiceDetails } from '@/config/service-details'
 import { services } from '@/config/services'
 import { motion } from 'framer-motion'
@@ -87,20 +91,6 @@ export default function ServicePage({ params }: ServicePageProps) {
 					</div>
 				</section>
 
-				{/* Service Details Section */}
-				<section className='py-16 md:py-24 bg-zinc-900'>
-					<div className='container'>
-						<div className='max-w-4xl mx-auto'>
-							<h2 className='text-3xl font-bold tracking-tight mb-8 uppercase'>
-								О Услуге
-							</h2>
-							<div className='space-y-6 text-gray-300'>
-								{getServiceDetails(service.id)}
-							</div>
-						</div>
-					</div>
-				</section>
-
 				{/* Contact Section */}
 				{/* <section id='contact' className='py-16 md:py-24 bg-black'>
 					<div className='container'>
@@ -131,6 +121,24 @@ export default function ServicePage({ params }: ServicePageProps) {
 					</div>
 				</section> */}
 			</main>
+			<Advantages />
+			<ServiceCardsGrid />
+			<WhyChooseUs />
+			<Branches />
+
+			{/* Service Details Section */}
+			<section className='py-16 md:py-24 bg-zinc-900'>
+				<div className='container'>
+					<div className='max-w-4xl mx-auto'>
+						<h2 className='text-3xl font-bold tracking-tight mb-8 uppercase'>
+							О Услуге
+						</h2>
+						<div className='space-y-6 text-gray-300'>
+							{getServiceDetails(service.id)}
+						</div>
+					</div>
+				</div>
+			</section>
 
 			<Footer />
 			<MobileFloatingFooter />

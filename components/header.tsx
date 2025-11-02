@@ -69,7 +69,7 @@ export function Header() {
 								<button className='text-gray-300 hover:text-white transition-colors duration-200 font-medium flex items-center gap-2'>
 									Услуги
 									<svg
-										className='h-3 w-3 text-gray-300'
+										className='h-3 w-3 text-gray-300 transition-transform duration-200 group-hover:rotate-180'
 										viewBox='0 0 20 20'
 										fill='none'
 										stroke='currentColor'
@@ -82,7 +82,7 @@ export function Header() {
 										/>
 									</svg>
 								</button>
-								<div className='absolute left-0 mt-2 w-64 bg-zinc-900 border border-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 transform -translate-y-1 group-hover:translate-y-0 transition-all pointer-events-none group-hover:pointer-events-auto z-50'>
+								<div className='absolute left-0 mt-2 w-64 bg-zinc-900 border border-gray-800 rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-50'>
 									<div className='py-2'>
 										{services.map(s => {
 											const title = (s as any).title || (s as any).name || s.id
@@ -91,7 +91,7 @@ export function Header() {
 												<Link
 													key={s.id}
 													href={href}
-													className='block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white'
+													className='block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors'
 												>
 													{title}
 												</Link>
@@ -99,7 +99,7 @@ export function Header() {
 										})}
 										<Link
 											href='#services'
-											className='block px-4 py-2 text-sm text-gray-400 hover:bg-gray-800 hover:text-white border-t border-gray-800'
+											className='block px-4 py-2 text-sm text-gray-400 hover:bg-gray-800 hover:text-white border-t border-gray-800 transition-colors'
 										>
 											Все услуги
 										</Link>

@@ -36,11 +36,9 @@ export function ServiceCardsGrid() {
 									<h3 className='text-lg md:text-xl font-bold group-hover:text-green-500 transition-colors'>
 										{service.title}
 									</h3>
-									<div className='flex items-center gap-2'>
-										<span className='text-base md:text-xl font-medium whitespace-nowrap'>
-											{service.price}
-										</span>
-									</div>
+									<span className='text-sm md:text-base text-gray-400 group-hover:text-green-500 transition-colors whitespace-nowrap'>
+										подробнее →
+									</span>
 								</div>
 							</Link>
 						</motion.div>

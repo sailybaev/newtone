@@ -8,8 +8,6 @@ Sitemap: https://newtone.kz/sitemap.xml
 Disallow: /api/
 Disallow: /admin/
 
-# Disallow dynamic service routes
-Disallow: /*/
 
 # Crawl-delay
 Crawl-delay: 10 

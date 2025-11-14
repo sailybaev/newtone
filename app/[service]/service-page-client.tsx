@@ -204,9 +204,9 @@ export function ServicePageClient({ service }: ServicePageClientProps) {
 							{service.description ||
 								`Профессиональные услуги ${service.title.toLowerCase()} в премиальном детейлинг центре NEW TONE. Используем только качественные материалы и современное оборудование.`}
 						</p>
-						<div className='text-2xl md:text-3xl font-bold mb-10 text-green-500'>
+						{/* <div className='text-2xl md:text-3xl font-bold mb-10 text-green-500'>
 							{service.price}
-						</div>
+						</div> */}
 						<div className='flex flex-col sm:flex-row gap-4'>
 							<ServiceCallToAction serviceTitle={service.title} />
 							<motion.button

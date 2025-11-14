@@ -78,6 +78,15 @@ export const services: Service[] = [
 		category: 'protection',
 	},
 	{
+		id: 'okleika-plenkoy',
+		title: 'ОКЛЕЙКА ПЛЕНКОЙ',
+		image: '/images/plenka.jpeg',
+		price: 'от 250 000 ₸',
+		link: '/okleika-plenkoy',
+		cols: 1,
+		category: 'protection',
+	},
+	{
 		id: 'zashchita-lobovogo-stekla',
 		title: 'ЗАЩИТА ЛОБОВОГО СТЕКЛА',
 		image: '/images/windshield.png',

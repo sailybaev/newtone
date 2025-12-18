@@ -43,7 +43,7 @@ export default function Home() {
 				<Hero />
 				<Advantages />
 				<ServiceCardsGrid />
-				<WhyChooseUs />
+				{/* <WhyChooseUs /> */}
 				<Branches />
 				<section
 					id='about'

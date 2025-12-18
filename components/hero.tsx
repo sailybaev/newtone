@@ -58,13 +58,13 @@ export function Hero() {
 					className='max-w-3xl'
 				>
 					<h1 className='text-4xl md:text-6xl font-bold mb-10 uppercase tracking-wider leading-tight'>
-						Детейлинг центр <br />
-						<span className='text-5xl md:text-7xl'>NEW TONE</span>
+						Детейлинг-центр NEWTONE | Астана<br />
+						{/* <span className='text-2xl md:text-6xl'>Астана</span> */}
 					</h1>
 					<p className='text-lg md:text-xl mb-10 text-gray-300 max-w-xl'>
-						Профессиональные услуги детейлинга, которые преображают ваш
-						автомобиль с тщательным вниманием к деталям и премиальными
-						продуктами.
+						Профессиональный детейлинг, который преображает ваш автомобиль.
+Максимальное внимание к деталям и только премиальные материалы для
+безупречного результата
 					</p>
 					<div className='flex flex-col sm:flex-row gap-4'>
 						<button

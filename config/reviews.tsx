@@ -8,7 +8,6 @@ export interface Review {
 }
 
 export const reviews: Review[] = [
-	
 	{
 		id: 1,
 		name: 'Ильгар Салигжанов',
